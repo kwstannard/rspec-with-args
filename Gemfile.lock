@@ -1,0 +1,37 @@
+PATH
+  remote: /Users/kstannard/personal_projects/rspec
+  specs:
+    rspec (3.0.0.pre)
+      rspec-core (= 3.0.0.pre)
+      rspec-expectations (= 3.0.0.pre)
+      rspec-mocks (= 3.0.0.pre)
+
+PATH
+  remote: /Users/kstannard/personal_projects/rspec-core
+  specs:
+    rspec-core (3.0.0.pre)
+
+PATH
+  remote: /Users/kstannard/personal_projects/rspec-expectations
+  specs:
+    rspec-expectations (3.0.0.pre)
+      diff-lcs (>= 1.1.3, < 2.0)
+
+PATH
+  remote: /Users/kstannard/personal_projects/rspec-mocks
+  specs:
+    rspec-mocks (3.0.0.pre)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    diff-lcs (1.2.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rspec!
+  rspec-core!
+  rspec-expectations!
+  rspec-mocks!
