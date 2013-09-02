@@ -1,4 +1,4 @@
-require_relative 'support/example_groups/with_args'
+require 'rspec-with-args'
 
 class Foo < Struct.new(:arg1, :arg2)
   def foo(m_arg1)
