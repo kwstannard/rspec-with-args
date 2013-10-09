@@ -7,7 +7,12 @@ module RSpec::WithArgs
 
   module CommonInstanceMethods
     def subject_args
-      metadata.fetch(:with_args,[])
+      args = metadata.fetch(:with_args,[])
+      if args.is_a?(Array)
+        args
+      else
+        Array.new
+      end
     end
 
     def metadata
@@ -50,7 +55,12 @@ module RSpec::WithArgs
     end
 
     def initialization_args
-      metadata[:initialization_args]
+      args = metadata[:initialization_args]
+      if args.is_a?(Array)
+        args
+      else
+        Array.new
+      end
     end
   end
 
