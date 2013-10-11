@@ -1,20 +1,8 @@
 require 'rspec-with-args'
 
-RSpec.configure do |c|
-  c.treat_symbols_as_metadata_keys_with_true_values = true
-end
-
 class Bar
   def foo
     "bar"
-  end
-end
-
-describe Bar, :with_args do
-  context "instance methods with no args" do
-    describe "#foo" do
-      it { should eq "bar" }
-    end
   end
 end
 
@@ -25,6 +13,18 @@ class Foo < Struct.new(:arg1, :arg2)
 
   def self.class_method(c_arg1, c_arg2)
     c_arg1 + c_arg2
+  end
+end
+
+RSpec.configure do |c|
+  c.treat_symbols_as_metadata_keys_with_true_values = true
+end
+
+describe Bar, :with_args do
+  context "instance methods with no args" do
+    describe "#foo" do
+      it { should eq "bar" }
+    end
   end
 end
 
