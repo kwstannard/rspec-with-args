@@ -7,7 +7,8 @@ module RspecWithArgs
 
   module RspecWithArgs::CommonInstanceMethods
     def subject_args
-      args = metadata.fetch(:with_args,[])
+      args = metadata.fetch(:with_args)
+
       if args.is_a?(Array)
         args
       else

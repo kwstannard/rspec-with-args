@@ -1,8 +1,10 @@
 require_relative 'common_methods'
+
 module RspecWithArgs
   module ClassExampleGroup
-    extend RspecWithArgs::CommonClassMethods
-    include RspecWithArgs::CommonInstanceMethods
+    extend CommonClassMethods
+    include CommonInstanceMethods
+
     RSpec.configure do |c|
       c.include self, {with_args:
         proc do |a, m|
@@ -28,6 +30,7 @@ module RspecWithArgs
 
     def self.set_initialization_args(metadata)
       metadata[:initialization_args] = metadata.fetch(:with_args,[])
+      metadata.store(:with_args, true)
     end
 
     def subject_class_proc
