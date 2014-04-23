@@ -1,11 +1,11 @@
-module RspecWithArgs
+module RSpec::WithArgs
   module CommonClassMethods
     def descriptee(m)
       m[:example_group][:description_args].first
     end
   end
 
-  module RspecWithArgs::CommonInstanceMethods
+  module RSpec::WithArgs::CommonInstanceMethods
     def subject_args
       args = metadata.fetch(:with_args)
 

@@ -1,4 +1,4 @@
-require 'rspec-with-args'
+require 'rspec-with_args'
 
 class Bar
   def foo

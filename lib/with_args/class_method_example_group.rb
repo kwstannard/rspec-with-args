@@ -1,6 +1,6 @@
-module RspecWithArgs::ClassMethodExampleGroup
-  extend RspecWithArgs::CommonClassMethods
-  include RspecWithArgs::CommonInstanceMethods
+module RSpec::WithArgs::ClassMethodExampleGroup
+  extend RSpec::WithArgs::CommonClassMethods
+  include RSpec::WithArgs::CommonInstanceMethods
   RSpec.configure do |c|
     c.include self, {with_args:
       lambda do |a, m|

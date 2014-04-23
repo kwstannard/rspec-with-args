@@ -1,6 +1,6 @@
 require_relative 'common_methods'
 
-module RspecWithArgs
+module RSpec::WithArgs
   module ClassExampleGroup
     extend CommonClassMethods
     include CommonInstanceMethods
