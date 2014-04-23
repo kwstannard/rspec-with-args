@@ -1,4 +1,4 @@
-#rspec-with-args-0.0.2
+#rspec-with-args-0.0.3
 
 rspec-with-args attempts to cut out having to explicitly write the subject of your example group when trying to call methods or add arguments to methods. It works by reading the conventional description syntax to determine what the subject is. Then allowing you to explicitly state what variables will be passed in as arguments.
 
@@ -6,23 +6,11 @@ Currently it supports initialization, class methods, and instance methods.
 
 ##example specs
 ```ruby
-require 'rspec-with-args'
-
-RSpec.configure do |c|
-  c.treat_symbols_as_metadata_keys_with_true_values = true
-end
+require 'rspec-with_args'
 
 class Bar
   def foo
     "bar"
-  end
-end
-
-describe Bar, :with_args do
-  context "instance methods with no args" do
-    describe "#foo" do
-      it { should eq "bar" }
-    end
   end
 end
 
@@ -33,6 +21,18 @@ class Foo < Struct.new(:arg1, :arg2)
 
   def self.class_method(c_arg1, c_arg2)
     c_arg1 + c_arg2
+  end
+end
+
+RSpec.configure do |c|
+  c.treat_symbols_as_metadata_keys_with_true_values = true
+end
+
+describe Bar, :with_args do
+  context "instance methods with no args" do
+    describe "#foo" do
+      it { should eq "bar" }
+    end
   end
 end
 

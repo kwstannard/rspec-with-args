@@ -4,7 +4,7 @@ module RSpec::WithArgs::ClassMethodExampleGroup
   RSpec.configure do |c|
     c.include self, {with_args:
       lambda do |a, m|
-      descriptee(m).to_s.match(/^\./)
+      descriptee(m).to_s.match(class_regex)
       end
     }
   end
@@ -31,9 +31,13 @@ module RSpec::WithArgs::ClassMethodExampleGroup
     case d = metadata[:example_group][:description_args].first
     when is_a?(Class)
       metadata[:subject_method_name] = d
-    when /^[.#]/
-      metadata[:subject_method_name] = d.gsub /^[.#]/, ""
+    when class_regex
+      metadata[:subject_method_name] = d.gsub class_regex, ""
     end
+  end
+
+  def self.class_regex
+    /^\./
   end
 
   def subject_proc
