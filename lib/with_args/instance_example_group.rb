@@ -1,10 +1,11 @@
 module RSpec::WithArgs::InstanceMethodExampleGroup
   extend RSpec::WithArgs::CommonClassMethods
   include RSpec::WithArgs::CommonInstanceMethods
+
   RSpec.configure do |c|
     c.include self, {with_args:
       lambda do |a, m|
-      descriptee(m).to_s.match(/^#/)
+      descriptee(m).to_s.match(instance_regex)
       end
     }
   end
@@ -31,9 +32,13 @@ module RSpec::WithArgs::InstanceMethodExampleGroup
     case d = metadata[:example_group][:description_args].first
     when is_a?(Class)
       metadata[:subject_method_name] = d
-    when /^[.#]/
-      metadata[:subject_method_name] = d.gsub /^[.#]/, ""
+    when instance_regex
+      metadata[:subject_method_name] = d.gsub instance_regex, ""
     end
+  end
+
+  def self.instance_regex
+    /^#/
   end
 
   def callee
